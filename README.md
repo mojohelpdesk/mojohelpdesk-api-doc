@@ -183,3 +183,57 @@ Additional url params:
  - `email_alias`
  - `email_forward`
 
+
+## Groups (formerly called companies)
+
+
+### List of companies:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+ 
+
+### List of companies supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+
+ 
+
+### Create company:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<company><name>My very own company</name></company>"
+
+ 
+
+### Update company:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<company><website-url>www.google.com</website-url></company>"
+
+ 
+
+### Destroy company:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+
+###  List of input fields  
+
+ - name
+ - primary_contact_id (ID of existing helpdesk user)
+ - billing_contact_id (ID of existing helpdesk user)
+ - support_level_id
+ - support_status_id (0 - active, 1 - delinquent)
+ - support_start_date
+ - support_end_date
+ - support_info_url
+ - address
+ - address2
+ - city
+ - state
+ - zip
+ - country
+ - website_url
+ - notes
