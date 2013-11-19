@@ -5,18 +5,18 @@ mojohelpdesk-api-doc
 While we are migrating it to Github, please find the doc API here:
  - https://help.mojohelpdesk.com/help/topic/129798
  
+# Mojo Helpdesk API Documentation
 
-==
-This is the official Mojo Helpdesk API documentation.  Learn about Mojo Helpdesk at www.mojohelpdesk.com.
+Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by Metadot. This document describe its public API.
 
 
-Mojo Helpdesk is a product of Metadot. www.metadot.com.
+## About Mojo Helpdesk API
 
-==
+Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3rd party developers to build web, desktop, and server applications or simple scripts that can communicate directly with the Mojo Helpdesk service. The communication is done by using `RESTful` `HTTP` requests and `XML` or `JSON` responses. 
 
-Replace 'mysupport.mojohelpdesk.com' with your helpdesk address, and access_key parameter with your access key (it can be found in your profile).
+## Authentication
 
-## Mojo Helpdesk API documentation
+In the code below, replace `mysupport.mojohelpdesk.com` with your helpdesk address, and `access_key` parameter with your access key (it can be found in your profile).
  
 The Mojo Helpdesk API can return XML or JSON. It requires an access key that is found in the Mojo Helpdesk user profile.
 
