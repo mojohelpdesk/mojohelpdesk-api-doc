@@ -18,8 +18,9 @@ Replace 'mysupport.mojohelpdesk.com' with your helpdesk address, and access_key 
 
 ## Mojo Helpdesk API documentation
  
+The Mojo Helpdesk API can return XML or JSON. It requires an access key that is found in the Mojo Helpdesk user profile.
 
-List tickets:
+## List tickets
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
     
@@ -35,7 +36,7 @@ List of tickets supports paging, with optional parameters per_page and page para
 
  
 
-Show ticket:
+##  Show ticket
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
     
@@ -45,21 +46,21 @@ Show ticket:
 
  
 
-Create ticket:
+## Create ticket
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<ticket><title>Test ticket</title><description>Testing API for ticket creation</description><ticket_queue_id>8</ticket_queue_id><priority_id>30</priority_id></ticket>"
 
-Update ticket:
+##  Update ticket
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<ticket><title>Test ticket API</title></ticket>"
 
  
 
-Destroy ticket:
+## Destroy ticket
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-List of input fields  
+## List of input fields  
 
  - title
  - description
