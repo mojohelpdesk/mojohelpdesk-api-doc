@@ -83,7 +83,8 @@ The Mojo Helpdesk API can return XML or JSON. It requires an access key that is 
  - custom_field_XXX (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
  - user_id
 
-### Show Comments for a ticket:
+## Ticket comments
+### Listing comments for a ticket:
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
     
