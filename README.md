@@ -19,7 +19,7 @@ Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3
 In the code below, replace `mysupport.mojohelpdesk.com` with your helpdesk address, and `access_key` parameter with your access key (it can be found in your profile).
  
 The Mojo Helpdesk API can return XML or JSON. It requires an access key that is found in the Mojo Helpdesk user profile.
-
+==
 ## Tickets
 ### List tickets
 
@@ -83,6 +83,7 @@ The Mojo Helpdesk API can return XML or JSON. It requires an access key that is 
  - custom_field_XXX (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
  - user_id
 
+==
 ## Ticket comments
 ### Listing comments for a ticket:
 
@@ -105,5 +106,32 @@ The Mojo Helpdesk API can return XML or JSON. It requires an access key that is 
  - time_spent
 
  
+
+==
+## Ticket search
+
+The last part of the urls is the search query - the format is the same as the one generated for 
+the advanced search on the web interface. Note the usage of `%20` instead 
+of space, `\&` instead of just `&`, `\(` instead of `(`, `\<` instead of `<`.
+
+Additional url params:
+
+ - `sf` - sort field name (same as the web form search, i.e. priority_id)
+ - `r` - 0/1 - reverse sort
+ - `per_page` - results per page (default 10, min 10)
+ - `page`  - page number (default 1)
+
+All open tickets:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+All urgent open tickets:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/priority_id:\(\<=20\)%20AND%20status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+All open tickets in certain queue:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/queue_id:19647%20AND%20status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
 
 
