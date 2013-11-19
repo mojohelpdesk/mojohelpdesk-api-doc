@@ -14,11 +14,16 @@ Mojo Helpdesk is a product of Metadot. www.metadot.com.
 
 ==
 
-Replace 'mysupport.mojohelpdesk.com' with your helpdesk address, and access_key parameter with your access key (it can be found in your profile).
+## Mojo Helpdesk API Documentation
+Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by Metadot. his document describe its public API.
 
-## Mojo Helpdesk API documentation
+### About Mojo Helpdesk API
+Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3rd party developers to build web, desktop, and server applications or simple scripts that can communicate directly with the Montastic service. The communication is done by using RESTful HTTP requests and XML or JSON responses.
+It requires an access key that is found in the Mojo Helpdesk user profile.
+
+In the example below, replace `mysupport.mojohelpdesk.com` with your helpdesk address, and `access_key` parameter with your access key (it can be found in your profile).
+
  
-The Mojo Helpdesk API can return XML or JSON. It requires an access key that is found in the Mojo Helpdesk user profile.
 
 ## List tickets
 
