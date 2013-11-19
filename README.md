@@ -219,7 +219,7 @@ Additional url params:
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-###  List of input fields  
+### List of input fields  
 
  - name
  - primary_contact_id (ID of existing helpdesk user)
@@ -237,3 +237,75 @@ Additional url params:
  - country
  - website_url
  - notes
+  
+ 
+## Users
+
+
+### List of users:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+ 
+### List of users supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+
+ 
+
+### Show user:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+ 
+
+### Create user:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<user><email>ivaylo@metadot.com</email><first_name>Ivaylo</first_name><last_name>Georgiev</last_name><company_id>888</company_id><password>111111</password></user>"
+
+ 
+
+### Update user:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<user><user_notes>Thats me again.</user_notes></user>"
+
+ 
+
+### Destroy user:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+
+
+
+### List of input fields  
+
+ - email
+ - first_name
+ - last_name
+ - work_phone
+ - cell_phone
+ - home_phone
+ - user_notes
+ - company_id
+ - password
+
+
+
+### role_id values:
+
+ - 10 - regular user
+ - 15 - restricted technician
+ - 20 - technician
+ - 30 - manager
+ - 35 - admin
+ - 40 - owner
+  
+ 
