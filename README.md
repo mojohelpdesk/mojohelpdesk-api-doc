@@ -1,13 +1,6 @@
-mojohelpdesk-api-doc
-====================
-
-## WORKING IN PROGRESS...
-While we are migrating it to Github, please find the doc API here:
- - https://help.mojohelpdesk.com/help/topic/129798
- 
 # Mojo Helpdesk API Documentation
 
-Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by Metadot. This document describe its public API.
+Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by Metadot. This document describes its public API.
 
 
 ## About Mojo Helpdesk API
