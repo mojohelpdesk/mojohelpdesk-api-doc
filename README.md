@@ -23,7 +23,7 @@ The Mojo Helpdesk API can return XML or JSON. It requires an access key that is 
     
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
- 
+
 
 List of tickets API call supports **paging**, with optional parameters `per_page` and `page` parameters. `per_page` default value is 30:
 
