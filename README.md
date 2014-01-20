@@ -127,7 +127,51 @@ Additional url params:
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/queue_id:19647%20AND%20status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
+#### List of searchable fields:
 
+ - assignee.id
+ - assignee.name
+ - assignee.email
+ - comments.id
+ - comments.body
+ - comments.created_on
+ - comments.time_spent
+ - comments.user.id
+ - comments.user.name
+ - comments.user.email
+ - company.id
+ - company.name
+ - created_by.id
+ - created_by.name
+ - created_by.email
+ - created_on
+ - custom_fields
+ - description
+ - due_on
+ - priority.id
+ - priority.name
+ - queue.id
+ - queue.name
+ - rating
+ - rated_on
+ - scheduled_on
+ - solved_on
+ - status.id
+ - status.name
+ - status_changed_on
+ - type.id
+ - type.name
+ - title
+ - updated_on
+
+
+#### Search notes:
+
+ - Format of all date fields is: 2013-11-11T21:37:02Z
+ - To search for range of date/time (i.e. for created_on field): 
+  - created_on:\[2013-11-11T21:37:02Z TO *\] (for dates after the given)
+  - created_on:\[* TO 2013-11-11T21:37:02Z\] (for dates before the given)
+  - created_on:\[2013-10-11T21:37:02Z TO 2013-11-11T21:37:02Z\] (for dates between the given)
 
 ## Ticket queues
 
