@@ -306,9 +306,9 @@ Additional url params:
 
 ### Create user:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<user><email>ivaylo@metadot.com</email><first_name>Ivaylo</first_name><last_name>Georgiev</last_name><company_id>888</company_id><password>111111</password></user>"
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&send_welcome_email=1 -X POST -d "<user><email>ivaylo@metadot.com</email><first_name>Ivaylo</first_name><last_name>Georgiev</last_name><company_id>888</company_id><password>111111</password></user>"
 
- 
+
 
 ### Update user:
 
