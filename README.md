@@ -117,15 +117,15 @@ Additional url params:
 
 #### All open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=status_id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### All urgent open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/priority_id:\(\<=20\)%20AND%20status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=priority_id:\(\<=20\)%20AND%20status_id:\(\<50\)&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### All open tickets in certain queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search/queue_id:19647%20AND%20status_id:\(\<50\)?sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=queue_id:19647%20AND%20status_id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### List of searchable fields:
 
@@ -172,6 +172,11 @@ Additional url params:
   - created_on:\[2013-11-11T21:37:02Z TO *\] (for dates after the given)
   - created_on:\[* TO 2013-11-11T21:37:02Z\] (for dates before the given)
   - created_on:\[2013-10-11T21:37:02Z TO 2013-11-11T21:37:02Z\] (for dates between the given)
+ - Surround all string values with parentheses and double quotes like the following examples:
+  - created_by.email:("myemail@somedomain.com")
+  - company.name:("My Company, Ltd")
+  - comments.user.email:("tester@mycompany.com")
+  
 
 ## Ticket queues
 
