@@ -117,15 +117,15 @@ Additional url params:
 
 #### All open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=status_id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### All urgent open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=priority_id:\(\<=20\)%20AND%20status_id:\(\<50\)&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=priority.id:\(\<=20\)%20AND%20status.id:\(\<50\)&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### All open tickets in certain queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=queue_id:19647%20AND%20status_id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=queue.id:19647%20AND%20status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 #### List of searchable fields:
 
