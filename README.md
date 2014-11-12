@@ -74,7 +74,7 @@ List of tickets API call supports **paging**, with optional parameters `per_page
    - 50 solved
    - 60 closed
  - assigned_to_id
- - ticket_form_id (if ommited, the default form would be used)
+ - ticket_form_id (if omitted, the default form would be used)
  - custom_field_XXX (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
  - user_id
 
