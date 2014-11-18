@@ -308,7 +308,9 @@ Additional url params:
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
- 
+### Get user by email address:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/get_by_email?email=someones@company.com&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 ### Create user:
 
