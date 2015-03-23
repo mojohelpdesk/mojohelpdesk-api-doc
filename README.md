@@ -29,6 +29,11 @@ List of tickets API call supports **paging**, with optional parameters `per_page
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=20\&page=3
 
+Sorting parameters:
+  - **sort_by** - id, title, description, user_id, assigned_to_id, status_id, ticket_form_id, priority_id, ticket_queue_id, company_id, rating, rated_on, created_on, updated_on, status_changed_on, solved_on, assinged_on, ticket_type_id, due_on, scheduled_on
+  - **sort_order** - asc, desc
+ 
+Default sorting is by 'id', descending. 
  
 
 ###  Show ticket
