@@ -299,6 +299,12 @@ Additional url params:
 
     curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
+### List of agents:
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
  
 ### List of users supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
 
