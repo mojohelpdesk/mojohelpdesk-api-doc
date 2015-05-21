@@ -78,6 +78,7 @@ Default sorting is by 'id', descending.
    - 40 information requested
    - 50 solved
    - 60 closed
+ - ticket_type_id
  - assigned_to_id
  - ticket_form_id (if omitted, the default form would be used)
  - custom_field_XXX (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
