@@ -72,7 +72,6 @@ Default sorting is by 'id', descending.
    - 40 low 
  - status_id  
    - 10 new 
-   - 15 assigned
    - 20 in progress
    - 30 on hold
    - 40 information requested
