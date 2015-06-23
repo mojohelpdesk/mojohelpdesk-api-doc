@@ -101,9 +101,10 @@ Default sorting is by 'id', descending.
 
 ### Comment input fields  
 
- - body
- - is_private
- - time_spent
+ - body - String
+ - is_private - Boolean
+ - time_spent - Integer
+ - suppress_user_notification - Boolean
 
  
 
