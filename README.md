@@ -353,6 +353,8 @@ Additional url params:
  - user_notes
  - company_id
  - password
+ - is_active
+ - role_id
 
 
 
