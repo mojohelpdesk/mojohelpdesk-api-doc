@@ -62,26 +62,27 @@ Default sorting is by 'id', descending.
 
 ### List of input fields  
 
- - title
- - description
- - ticket_queue_id
- - priority_id
+ - title - String
+ - description - String
+ - ticket_queue_id - Integer
+ - priority_id - Integer
    - 10 emergency 
    - 20 urgent 
    - 30 normal
    - 40 low 
- - status_id  
+ - status_id - Integer
    - 10 new 
    - 20 in progress
    - 30 on hold
    - 40 information requested
    - 50 solved
    - 60 closed
- - ticket_type_id
- - assigned_to_id
- - ticket_form_id (if omitted, the default form would be used)
- - custom_field_XXX (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
- - user_id
+ - ticket_type_id - Integer
+ - assigned_to_id - Integer
+ - ticket_form_id - Integer (if omitted, the default form would be used)
+ - custom_field_XXX - String (where XXX is the name of the custom field, i.e. custom_field_my_awesome_field)
+ - user_id - Integer
+ - cc - String
 
 
 ## Ticket comments
@@ -105,6 +106,7 @@ Default sorting is by 'id', descending.
  - is_private - Boolean
  - time_spent - Integer
  - suppress_user_notification - Boolean
+ - cc - String
 
  
 
