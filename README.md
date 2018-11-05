@@ -105,9 +105,11 @@ Default sorting is by 'id', descending.
  - body - String
  - is_private - Boolean
  - time_spent - Integer
- - suppress_user_notification - Boolean
  - cc - String
 
+### Additional parameters
+
+ - suppress_user_notification - Boolean
  
 
 
