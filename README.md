@@ -5,7 +5,7 @@ Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by M
 
 ## About Mojo Helpdesk API
 
-Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3rd party developers to build web, desktop, and server applications or simple scripts that can communicate directly with the Mojo Helpdesk service. The communication is done by using `RESTful` `HTTP` requests and `XML` or `JSON` responses. 
+Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3rd party developers to build web, desktop, and server applications or simple scripts that can communicate directly with the Mojo Helpdesk service. The communication is done by using `RESTful` `HTTP` requests and `XML` or `JSON` responses and requires that all requests are ascii encoded.
 
 ## Authentication
 
