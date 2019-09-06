@@ -118,6 +118,24 @@ i.e. custom_field_my_awesome_field)
 
 - suppress_user_notification - Boolean
 
+## Ticket attachments
+
+### List attachments for a ticket
+
+    curl https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Add attachment to a ticket
+
+    curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST
+
+### Download an attachment
+
+    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Delete an attachment
+
+    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+
 ## Ticket search
 
 The last part of the urls is the search query - the format is the same as the
