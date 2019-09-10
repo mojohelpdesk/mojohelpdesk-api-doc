@@ -118,6 +118,21 @@ i.e. custom_field_my_awesome_field)
 
 - suppress_user_notification - Boolean
 
+## Ticket staff notes
+
+### Listing staff notes for a ticket
+
+    curl https://app.mojohelpdesk.com/api/v2/tickets/114/staff_notes?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Create staff note
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/staff_notes?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"body":"New staff note"}'
+
+### Staff note input fields  
+
+- body - String
+- cc - String
+
 ## Ticket attachments
 
 ### List attachments for a ticket
