@@ -132,6 +132,7 @@ i.e. custom_field_my_awesome_field)
 
 - body - String
 - cc - String
+- time_spent - Integer
 
 ## Ticket attachments
 
