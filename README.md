@@ -141,7 +141,11 @@ i.e. custom_field_my_awesome_field)
 
 ### Add attachment to a ticket
 
-    curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST
+    curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?staff_only=true\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST
+
+ Additional url params:
+ 
+ - `staff_only` - true/false
 
 ### Download an attachment
 
