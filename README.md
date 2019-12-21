@@ -1,3 +1,5 @@
+[![Services Health](https://mojohelpdesk.montastic.io/badge)](https://mojohelpdesk.montastic.io)
+
 # Mojo Helpdesk API v2 Documentation
 
 Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by
