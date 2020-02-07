@@ -224,6 +224,8 @@ Additional url params:
 - type.name
 - title
 - updated_on
+- tags.id
+- tags.label
 
 #### Search notes
 
