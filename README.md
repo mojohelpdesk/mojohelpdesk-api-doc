@@ -53,6 +53,10 @@ Default sorting is by 'id', descending.
 ### Create ticket
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
+    
+### Create ticket with user
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30", "user":{"email":"customer@someplace.com"}}'
 
 ### Update ticket
 
@@ -98,6 +102,10 @@ Default sorting is by 'id', descending.
 i.e. custom_field_my_awesome_field)
 - user_id - Integer
 - cc - String
+- user:
+  - email (required)
+  - first_name
+  - last_name
 
 ## Ticket comments
 
