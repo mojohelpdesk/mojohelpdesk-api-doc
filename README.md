@@ -106,6 +106,11 @@ i.e. custom_field_my_awesome_field)
   - email (required)
   - first_name
   - last_name
+  
+#### Additional parameters
+
+- suppress_user_notification - Boolean when set to `true` will not send any email to notify for the ticket creation
+
 
 ## Ticket comments
 
