@@ -32,6 +32,7 @@ if len(sys.argv) >= 3:
 
 print("Using DN: %s" % dn)
 
+
 #
 # Ticket list endpoint / URL
 # 
@@ -72,6 +73,15 @@ assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status
 ticket = r.json()
 
 #
+#
+# create ticket without email notification OK
+showProgress()
+data = {'suppress_user_notification': 'true', 'title':'Test ticket','description':'Testing API for ticket creation','priority_id':30,'ticket_queue_id':ticket_queues[0]['id']}
+r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, json=data, headers=headers)
+assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
+ticket = r.json()
+
+#
 # 
 # show ticket OK
 showProgress()
@@ -94,6 +104,22 @@ showProgress()
 r = requests.get(apiUrl + 'users/techs?access_key=' + goodKey, headers=headers)
 assert r.status_code == 200, "Error getting list of agents: expected 200, got: %d." % r.status_code
 agents = r.json()
+
+#
+# 
+# get access rights for restricted agents
+showProgress()
+r = requests.get(apiUrl + 'access_rights/restricted_agents?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting access rights for restricted agents. Expected 200, got: %d" % r.status_code
+restricted_agents = r.json()
+
+#
+# 
+# get access rights for groups
+showProgress()
+r = requests.get(apiUrl + 'access_rights/groups?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting access rights for restricted agents. Expected 200, got: %d" % r.status_code
+groups = r.json()
 
 #
 # 
