@@ -39,9 +39,9 @@ List of tickets API call supports **paging**, with optional parameters
 Sorting parameters:
 
 - **sort_by** - id, title, description, user_id, assigned_to_id, status_id,
-ticket_form_id, priority_id, ticket_queue_id, company_id, rating, rated_on,
-created_on, updated_on, status_changed_on, solved_on, assigned_on,
-ticket_type_id, due_on, scheduled_on
+  ticket_form_id, priority_id, ticket_queue_id, company_id, rating, rated_on,
+  created_on, updated_on, status_changed_on, solved_on, assigned_on,
+  ticket_type_id, due_on, scheduled_on
 - **sort_order** - asc, desc
 
 Default sorting is by 'id', descending.
@@ -53,10 +53,10 @@ Default sorting is by 'id', descending.
 ### Create ticket
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
-    
-### Create ticket with user
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30", "user":{"email":"customer@someplace.com"}}'
+#### Additional parameters
+
+- suppress_user_notification - Boolean when set to `true` will not send any email to notify for the ticket creation
 
 ### Update ticket
 
@@ -78,7 +78,7 @@ Default sorting is by 'id', descending.
 
     curl https://app.mojohelpdesk.com/api/v2/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### Ticket input fields  
+### Ticket input fields
 
 - title - String
 - description - String
@@ -99,18 +99,9 @@ Default sorting is by 'id', descending.
 - assigned_to_id - Integer
 - ticket_form_id - Integer (if omitted, the default form would be used)
 - custom_field_XXX - String (where XXX is the name of the custom field,
-i.e. custom_field_my_awesome_field)
+  i.e. custom_field_my_awesome_field)
 - user_id - Integer
 - cc - String
-- user:
-  - email (required)
-  - first_name
-  - last_name
-  
-#### Additional parameters
-
-- suppress_user_notification - Boolean when set to `true` will not send any email to notify for the ticket creation
-
 
 ## Ticket comments
 
@@ -122,7 +113,7 @@ i.e. custom_field_my_awesome_field)
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"body":"New comment"}'
 
-### Comment input fields  
+### Comment input fields
 
 - body - String
 - is_private - Boolean
@@ -143,7 +134,7 @@ i.e. custom_field_my_awesome_field)
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/staff_notes?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"body":"New staff note"}'
 
-### Staff note input fields  
+### Staff note input fields
 
 - body - String
 - cc - String
@@ -159,9 +150,9 @@ i.e. custom_field_my_awesome_field)
 
     curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?staff_only=true\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST
 
- Additional url params:
- 
- - `staff_only` - true/false
+Additional url params:
+
+- `staff_only` - true/false
 
 ### Download an attachment
 
@@ -183,7 +174,7 @@ Additional url params:
 - `sf` - sort field name (same as the web form search, i.e. priority_id)
 - `r` - 0/1 - reverse sort
 - `per_page` - results per page (default 10, min 10)
-- `page`  - page number (default 1)
+- `page` - page number (default 1)
 
 ### All open tickets
 
@@ -237,23 +228,21 @@ Additional url params:
 - type.name
 - title
 - updated_on
-- tags.id
-- tags.label
 
 #### Search notes
 
 - Format of all date fields is: 2013-11-11T21:37:02Z
 - To search for range of date/time (i.e. for created_on field):
-  - created_on:\[2013-11-11T21:37:02Z TO *\] (for dates after the given)
-  - created_on:\[* TO 2013-11-11T21:37:02Z\] (for dates before the given)
+  - created_on:\[2013-11-11T21:37:02Z TO \*\] (for dates after the given)
+  - created_on:\[\* TO 2013-11-11T21:37:02Z\] (for dates before the given)
   - created_on:\[2013-10-11T21:37:02Z TO 2013-11-11T21:37:02Z\] (for dates
-between the given)
+    between the given)
   - Surround all string values with parentheses and double quotes like the
-following examples:
+    following examples:
   - created_by.email:("myemail@somedomain.com")
   - company.name:("My Company, Ltd")
   - comments.user.email:("tester@mycompany.com")
-  
+
 ## Ticket queues
 
 ### List of ticket queues
@@ -308,7 +297,7 @@ following examples:
 
     curl https://app.mojohelpdesk.com/api/v2/groups/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### Group input fields  
+### Group input fields
 
 - name
 - primary_contact_id (ID of existing helpdesk user)
@@ -361,7 +350,7 @@ following examples:
 
     curl https://app.mojohelpdesk.com/api/v2/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### User input fields  
+### User input fields
 
 - email
 - first_name
@@ -383,7 +372,7 @@ following examples:
 - 30 - manager
 - 35 - admin
 - 40 - owner
-  
+
 ## Ticket tags
 
 ### List of ticket tags
@@ -410,7 +399,7 @@ following examples:
 
     curl https://app.mojohelpdesk.com/api/v2/tags/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### Tag input fields  
+### Tag input fields
 
 - label
 - color
@@ -433,8 +422,46 @@ following examples:
 
     curl https://app.mojohelpdesk.com/api/v2/tickets/88/tasks/777?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### Task input fields  
+### Task input fields
 
 - title
 - notes
 - is_completed
+
+## Access rights on ticket queues
+
+### List access rights for restricted agents
+
+    curl https://app.mojohelpdesk.com/api/v2/access_rights/restricted_agents?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### List access rights for groups
+
+    curl https://app.mojohelpdesk.com/api/v2/access_rights/groups?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Show access rights for a restricted agent
+
+    curl https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Show access rights for a group
+
+    curl https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Set access right for a restricted agent on a single queue
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
+
+### Set access right for a restricted agent on multiple queues
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights/set?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
+
+### Set access right for a group on a single queue
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
+
+### Set access right for a group on all queues
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"has_access_to_all_ticket_queues":"true"}'
+
+### Set access right for a group on multiple queues
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights/set?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
