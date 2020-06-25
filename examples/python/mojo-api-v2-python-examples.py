@@ -65,6 +65,14 @@ ticket_queues = r.json()
 
 #
 # 
+# get ticket form list
+showProgress()
+r = requests.get(apiUrl + 'ticket_forms?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting ticket form list. Expected 200, got: %d" % r.status_code
+ticket_forms = r.json()
+
+#
+# 
 # create ticket OK
 showProgress()
 data = {'title':'Test ticket','description':'Testing API for ticket creation','priority_id':30,'ticket_queue_id':ticket_queues[0]['id']}
