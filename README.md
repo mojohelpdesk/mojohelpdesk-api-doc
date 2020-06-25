@@ -469,3 +469,18 @@ Additional url params:
 ### Set access right for a group on multiple queues
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights/set?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
+
+
+## Ticket forms
+
+### List of ticket forms
+
+    curl https://app.mojohelpdesk.com/api/v2/ticket_forms?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+List all forms with some basic information for them.
+
+### Show ticket forms
+
+    curl https://app.mojohelpdesk.com/api/v2/ticket_forms/2700?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+Returns all relevant information for a form, including the list of field attributes, and field rules.
