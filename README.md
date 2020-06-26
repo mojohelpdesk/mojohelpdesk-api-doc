@@ -484,3 +484,23 @@ List all forms with some basic information for them.
     curl https://app.mojohelpdesk.com/api/v2/ticket_forms/2700?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
 Returns all relevant information for a form, including the list of field attributes, and field rules.
+
+## Group tickets access for users
+
+### List all groups tickets access for a user
+
+    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Get single group tickets access for a user
+
+    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Set single group tickets access for a user
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"access":"1"}'
+
+Possible access values:
+
+- 0 - no access
+- 1 - full access
+- 2 - comment only
