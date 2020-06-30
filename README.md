@@ -267,13 +267,13 @@ Additional url params:
 
 ### Update ticket queue
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"name":"My precios queue"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"name":"My precious queue"}'
 
 ### Destroy ticket queue
 
     curl https://app.mojohelpdesk.com/api/v2/ticket_queues/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
 
-### Ticket queue of input fields
+### Ticket queue input fields
 
 - name
 - email_alias
@@ -504,3 +504,29 @@ Possible access values:
 - 0 - no access
 - 1 - full access
 - 2 - comment only
+
+## Ticket types
+
+### List of ticket types
+
+    curl https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Show ticket type
+
+    curl https://app.mojohelpdesk.com/api/v2/ticket_type/8?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+
+### Create ticket type
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"name":"My type"}'
+
+### Update ticket type
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"name":"My precious type"}'
+
+### Destroy ticket type
+
+    curl https://app.mojohelpdesk.com/api/v2/ticket_types/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+
+### Ticket type input fields
+
+- name
