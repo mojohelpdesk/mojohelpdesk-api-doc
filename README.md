@@ -15,7 +15,8 @@ XML is not supported.
 
 ## Example usage in Python
 
-A Mojo Helpdesk example API usage Python script is available [here](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python).
+A Mojo Helpdesk example API usage Python script is available
+[here](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python).
 
 ## Authentication
 
