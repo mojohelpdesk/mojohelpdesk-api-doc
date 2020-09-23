@@ -121,7 +121,6 @@ Default sorting is by 'id', descending.
 ### Comment input fields
 
 - body - String
-- is_private - Boolean
 - time_spent - Integer
 - cc - String
 
