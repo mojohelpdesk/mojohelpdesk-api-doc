@@ -90,6 +90,24 @@ assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status
 ticket = r.json()
 
 #
+#
+# create ticket with attachments
+showProgress()
+data = {
+  'title':'Test ticket',
+  'description':'Testing API for ticket creation',
+  'priority_id':30,
+  'ticket_queue_id':ticket_queues[0]['id']
+}
+files = {
+  'attachment[0][content]': open('test.txt', 'rb'),
+  'attachment[1][content]': open('test.pdf', 'rb')
+}
+r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, files=files, data=data)
+assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
+ticket = r.json()
+
+#
 # 
 # show ticket OK
 showProgress()
