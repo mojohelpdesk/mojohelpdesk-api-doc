@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 
 ###
+# Sample Python script to demo Mojo Helpdesk API.
+#
+# Setup: pip install requests # do this only once.
 #
 # This Python script showcases and tests Mojo Helpdesk (https://mojohelpdesk.com) REST API.
+# This script lives here: https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python
 #
 # Usage - see help: ./mojo-helpdesk-api-tests.py
 #
-# Public domain.    
+# Public domain.   
+#
+# Learn more about Mojo Helpdesk: www.mojohelpdesk.com
 #
 ##
 import requests # pip install requests
