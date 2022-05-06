@@ -1,4 +1,4 @@
-**This API version is already deprecated.**
+**This API version is deprecated.**
 
 # Mojo Helpdesk API Documentation
 
