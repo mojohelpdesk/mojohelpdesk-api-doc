@@ -4,13 +4,13 @@ The script `mojo-api-v2-python-examples.py` is an example how to use Mojo Helpde
 
 ## Installation
 
-Install `pip` first then the `requests` module:
+Install `pip` first  then the `requests` module:
 
     pip install requests
 
 ## Running the script
 
-Get your access key from your Mojo Helpdesk account then run:
+Get your access key from your Mojo Helpdesk account user profile then run:
 
     ./mojo-api-v2-python-examples.py YOUR_ACCESS_KEY
 
