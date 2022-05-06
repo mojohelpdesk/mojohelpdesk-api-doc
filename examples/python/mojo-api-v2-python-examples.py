@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 ###
-# Sample Python script to demo Mojo Helpdesk API.
+# Sample Python script to demo Mojo Helpdesk API for basic CRUD operation.
 #
 # Setup: pip install requests # do this only once.
 #
@@ -106,8 +106,8 @@ data = {
   'ticket_queue_id':ticket_queues[0]['id']
 }
 files = {
-  'attachment[0][content]': open('test.txt', 'rb'),
-  'attachment[1][content]': open('test.pdf', 'rb')
+  'attachment[0][content]': open('testfile.txt', 'rb'),
+  'attachment[1][content]': open('logo.png', 'rb')
 }
 r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, files=files, data=data)
 assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
@@ -179,7 +179,6 @@ r = requests.get(apiUrl + 'tickets/%s' % ticket['id'] + '/events?access_key=' + 
 assert r.status_code == 200, "Error getting list of events: expected 200, got: %d." % r.status_code
 events = r.json()
 assert len(events) > 0, 'List of events should not be empty'
-assert events[0]['action_name'] == 'update', 'Latest event should be an update'
 
 #
 #
