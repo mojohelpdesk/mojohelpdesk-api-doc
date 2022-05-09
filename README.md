@@ -9,7 +9,7 @@ This document describes its public API v2. [API v1](https://github.com/mojohelpd
 
 ## About Mojo Helpdesk API
 
-Mojo Helpdesk API is easy to use. It API allows
+Mojo Helpdesk API is easy to use. It allows
 3rd party developers to build web, desktop, and server applications or simple
 scripts that can communicate directly with the Mojo Helpdesk service.
 The communication is done by using `RESTful` `HTTP` requests in `JSON` format.
