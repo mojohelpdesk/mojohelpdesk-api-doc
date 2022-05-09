@@ -8,6 +8,8 @@
 # This Python script showcases and tests Mojo Helpdesk (https://mojohelpdesk.com) REST API.
 # This script lives here: https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python
 #
+# Requirement: use your API key that is located in your Mojo Helpdesk user profile.
+#
 # Usage - see help: ./mojo-helpdesk-api-tests.py
 #
 # Public domain.   
