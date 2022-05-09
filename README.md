@@ -3,7 +3,7 @@
 # Mojo Helpdesk API v2 Documentation
 
 Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking software as a service (Saas). 
-It is developed by [Metadot](www.metadot.com). 
+It is developed by [Metadot](https://www.metadot.com). 
 
 This document describes its public API v2. [API v1](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/v1) is deprecated.
 
