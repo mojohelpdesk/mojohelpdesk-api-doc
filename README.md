@@ -2,21 +2,25 @@
 
 # Mojo Helpdesk API v2 Documentation
 
-Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by
-Metadot. This document describes its public API v2. [API v1](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/v1) is deprecated.
+Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking software as a service (Saas). 
+It is developed by [Metadot](www.metadot.com). 
+
+This document describes its public API v2. [API v1](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/v1) is deprecated.
 
 ## About Mojo Helpdesk API
 
-Mojo Helpdesk API is easy to use. Mojo Helpdesk API allows
+Mojo Helpdesk API is easy to use. It API allows
 3rd party developers to build web, desktop, and server applications or simple
 scripts that can communicate directly with the Mojo Helpdesk service.
-The communication is done by using `RESTful` `HTTP` requests in JSON format.
-XML is not supported.
+The communication is done by using `RESTful` `HTTP` requests in `JSON` format.
+`XML` is not supported.
 
 ## Example usage in Python
 
 A Mojo Helpdesk example API usage Python script is available
 [here](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python).
+
+# Mojo Helpdesk API Documentation
 
 ## Authentication
 
