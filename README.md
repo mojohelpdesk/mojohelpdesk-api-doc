@@ -200,6 +200,15 @@ Additional url params:
 
     curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=_exists_:due_on\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
 
+### List of sortable fields
+
+- created_on
+- due_on
+- rated_on
+- scheduled_on
+- solved_on
+- updated_on
+
 ### List of searchable fields
 
 - assignee.id
