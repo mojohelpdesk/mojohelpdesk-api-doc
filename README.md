@@ -47,7 +47,7 @@ JavaScript:
 
     <script>
         const Http = new XMLHttpRequest();
-        const url='https://app.mojohelpdesk.com/api/v2/tickets?access_key=c2705739789600bf9beed2c637d012b55c275515';
+        const url='https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX';
         Http.open("GET", url);
         Http.setRequestHeader("Content-Type", "application/json");
         Http.send();
