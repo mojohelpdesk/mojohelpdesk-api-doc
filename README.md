@@ -70,7 +70,7 @@ Default sorting is by 'id', descending.
 
 CURL:
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/88?access_key=XXX
+    curl https://app.mojohelpdesk.com/api/v2/tickets/123456?access_key=XXX
 
 JavaScript:
 
