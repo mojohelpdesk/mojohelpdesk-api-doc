@@ -34,12 +34,14 @@ in the Mojo Helpdesk user profile.
 
 ### List tickets
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX
 
 List of tickets API call supports **paging**, with optional parameters
 `per_page` and `page` parameters. `per_page` default value is 30, the maximum - 100:
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=20\&page=3
+    curl https://app.mojohelpdesk.com/api/v2/tickets?access_key=xxx\&per_page=20\&page=3
+
+
 
 Sorting parameters:
 
@@ -53,15 +55,15 @@ Default sorting is by 'id', descending.
 
 ### Show ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/88?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/88?access_key=XXX
 
 ### Create ticket
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
     
 ### Create ticket with user
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30", "user":{"email":"customer@someplace.com"}}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30", "user":{"email":"customer@someplace.com"}}'
 
 #### Additional parameters
 
@@ -69,23 +71,23 @@ Default sorting is by 'id', descending.
 
 ### Update ticket
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"title":"Test ticket API"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113?access_key=XXX -X PUT -d '{"title":"Test ticket API"}'
 
 ### List of events for a ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/113/events?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/113/events?access_key=XXX
 
 ### Add tag to a ticket
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113/add_tag?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"tag_label":"Test"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113/add_tag?access_key=XXX -X POST -d '{"tag_label":"Test"}'
 
 ### Remove tag from a ticket
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113/remove_tag?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"tag_label":"Test"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/113/remove_tag?access_key=XXX -X POST -d '{"tag_label":"Test"}'
 
 ### Destroy ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/tickets/113?access_key=XXX -X DELETE
 
 ### Ticket input fields
 
@@ -116,11 +118,11 @@ Default sorting is by 'id', descending.
 
 ### Listing comments for a ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/114/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/114/comments?access_key=XXX
 
 ### Create comment
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"body":"New comment"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/comments?access_key=XXX -X POST -d '{"body":"New comment"}'
 
 ### Comment input fields
 
@@ -136,11 +138,11 @@ Default sorting is by 'id', descending.
 
 ### Listing staff notes for a ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/114/staff_notes?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/114/staff_notes?access_key=XXX
 
 ### Create staff note
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/staff_notes?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"body":"New staff note"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/staff_notes?access_key=XXX -X POST -d '{"body":"New staff note"}'
 
 ### Staff note input fields
 
@@ -152,11 +154,11 @@ Default sorting is by 'id', descending.
 
 ### List attachments for a ticket
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?access_key=XXX
 
 ### Add attachment to a ticket
 
-    curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?staff_only=true\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST
+    curl -F "file=@/home/user/my-file.txt" https://app.mojohelpdesk.com/api/v2/tickets/211402/attachments?staff_only=true\&access_key=XXX -X POST
 
 Additional url params:
 
@@ -164,11 +166,11 @@ Additional url params:
 
 ### Download an attachment
 
-    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=XXX
 
 ### Delete an attachment
 
-    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/attachments/6422878?access_key=XXX -X DELETE
 
 ## Ticket search
 
@@ -186,19 +188,19 @@ Additional url params:
 
 ### All open tickets
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=XXX
 
 ### All urgent open tickets
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=priority.id:\(\<=20\)%20AND%20status.id:\(\<50\)&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=priority.id:\(\<=20\)%20AND%20status.id:\(\<50\)&sf=created_on\&r=0\&access_key=XXX
 
 ### All open tickets in certain queue
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=queue.id:19647%20AND%20status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=queue.id:19647%20AND%20status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=XXX
 
 ### All tickets with due date
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=_exists_:due_on\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/search?query=_exists_:due_on\&sf=created_on\&r=0\&access_key=XXX
 
 ### List of sortable fields
 
@@ -264,27 +266,27 @@ Additional url params:
 
 ### List of ticket queues
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=XXX
 
 ### List of ticket queues supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=XXX\&per_page=10\&page=2
 
 ### Show ticket queue
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_queues/8?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_queues/8?access_key=XXX
 
 ### Create ticket queue
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"name":"My queue"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues?access_key=XXX -X POST -d '{"name":"My queue"}'
 
 ### Update ticket queue
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"name":"My precious queue"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_queues/11?access_key=XXX -X PUT -d '{"name":"My precious queue"}'
 
 ### Destroy ticket queue
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_queues/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/ticket_queues/10?access_key=XXX -X DELETE
 
 ### Ticket queue input fields
 
@@ -296,23 +298,23 @@ Additional url params:
 
 ### List of groups
 
-    curl https://app.mojohelpdesk.com/api/v2/groups?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/groups?access_key=XXX
 
 ### List of groups supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page
 
-    curl https://app.mojohelpdesk.com/api/v2/groups?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl https://app.mojohelpdesk.com/api/v2/groups?access_key=XXX\&per_page=10\&page=2
 
 ### Create group
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"name":"My very own group"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups?access_key=XXX -X POST -d '{"name":"My very own group"}'
 
 ### Update group
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"website-url":"www.google.com"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/1999?access_key=XXX -X PUT -d '{"website-url":"www.google.com"}'
 
 ### Destroy group
 
-    curl https://app.mojohelpdesk.com/api/v2/groups/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/groups/1999?access_key=XXX -X DELETE
 
 ### Group input fields
 
@@ -337,35 +339,35 @@ Additional url params:
 
 ### List of users
 
-    curl https://app.mojohelpdesk.com/api/v2/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users?access_key=XXX
 
 ### List of agents
 
-    curl https://app.mojohelpdesk.com/api/v2/users/techs?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/techs?access_key=XXX
 
 ### List of users supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page
 
-    curl https://app.mojohelpdesk.com/api/v2/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl https://app.mojohelpdesk.com/api/v2/users?access_key=XXX\&per_page=10\&page=2
 
 ### Show user
 
-    curl https://app.mojohelpdesk.com/api/v2/users/1?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/1?access_key=XXX
 
 ### Get user by email address
 
-    curl https://app.mojohelpdesk.com/api/v2/users/get_by_email?email=someone@company.com&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/get_by_email?email=someone@company.com&access_key=XXX
 
 ### Create user
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&send_welcome_email=1 -X POST -d '{"email":"ivaylo+test@metadot.com","first_name":"Ivaylo","last_name":"Georgiev","company_id":"888","password":"111111"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users?access_key=XXX\&send_welcome_email=1 -X POST -d '{"email":"ivaylo+test@metadot.com","first_name":"Ivaylo","last_name":"Georgiev","company_id":"888","password":"111111"}'
 
 ### Update user
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"user_notes":"Thats me again."}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1999?access_key=XXX -X PUT -d '{"user_notes":"Thats me again."}'
 
 ### Destroy user
 
-    curl https://app.mojohelpdesk.com/api/v2/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/users/1999?access_key=XXX -X DELETE
 
 ### User input fields
 
@@ -394,27 +396,27 @@ Additional url params:
 
 ### List of ticket tags
 
-    curl https://app.mojohelpdesk.com/api/v2/tags?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tags?access_key=XXX
 
 ### List of tags supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page
 
-    curl https://app.mojohelpdesk.com/api/v2/tags?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl https://app.mojohelpdesk.com/api/v2/tags?access_key=XXX\&per_page=10\&page=2
 
 ### Show tag
 
-    curl https://app.mojohelpdesk.com/api/v2/tags/8?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tags/8?access_key=XXX
 
 ### Create tag
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tags?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"label":"Test","color":"#777777"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tags?access_key=XXX -X POST -d '{"label":"Test","color":"#777777"}'
 
 ### Update tag
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tags/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"color":"#ff0000"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tags/11?access_key=XXX -X PUT -d '{"color":"#ff0000"}'
 
 ### Destroy tag
 
-    curl https://app.mojohelpdesk.com/api/v2/tags/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/tags/10?access_key=XXX -X DELETE
 
 ### Tag input fields
 
@@ -425,19 +427,19 @@ Additional url params:
 
 ### List of ticket tasks
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/88/tasks?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/tickets/88/tasks?access_key=XXX
 
 ### Create ticket task
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/tasks?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"title":"Test"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/tasks?access_key=XXX -X POST -d '{"title":"Test"}'
 
 ### Update ticket task
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/tasks/777?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"notes":"Help"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets/88/tasks/777?access_key=XXX -X PUT -d '{"notes":"Help"}'
 
 ### Destroy ticket task
 
-    curl https://app.mojohelpdesk.com/api/v2/tickets/88/tasks/777?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/tickets/88/tasks/777?access_key=XXX -X DELETE
 
 ### Task input fields
 
@@ -449,52 +451,52 @@ Additional url params:
 
 ### List access rights for restricted agents
 
-    curl https://app.mojohelpdesk.com/api/v2/access_rights/restricted_agents?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/access_rights/restricted_agents?access_key=XXX
 
 ### List access rights for groups
 
-    curl https://app.mojohelpdesk.com/api/v2/access_rights/groups?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/access_rights/groups?access_key=XXX
 
 ### Show access rights for a restricted agent
 
-    curl https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=XXX
 
 ### Show access rights for a group
 
-    curl https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=XXX
 
 ### Set access right for a restricted agent on a single queue
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights?access_key=XXX -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
 
 ### Set access right for a restricted agent on multiple queues
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights/set?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/1819458/access_rights/set?access_key=XXX -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
 
 ### Set access right for a group on a single queue
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=XXX -X POST -d '{"ticket_queue_id":"94748","has_access":"true"}'
 
 ### Set access right for a group on all queues
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"has_access_to_all_ticket_queues":"true"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights?access_key=XXX -X POST -d '{"has_access_to_all_ticket_queues":"true"}'
 
 ### Set access right for a group on multiple queues
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights/set?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights/set?access_key=XXX -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
 
 
 ## Ticket forms
 
 ### List of ticket forms
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_forms?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_forms?access_key=XXX
 
 List all forms with some basic information for them.
 
 ### Show ticket forms
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_forms/2700?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_forms/2700?access_key=XXX
 
 Returns all relevant information for a form, including the list of field attributes, and field rules.
 
@@ -502,15 +504,15 @@ Returns all relevant information for a form, including the list of field attribu
 
 ### List all groups tickets access for a user
 
-    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access?access_key=XXX
 
 ### Get single group tickets access for a user
 
-    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=XXX
 
 ### Set single group tickets access for a user
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"access":"1"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/users/14/group_access/1234?access_key=XXX -X POST -d '{"access":"1"}'
 
 Possible access values:
 
@@ -522,23 +524,23 @@ Possible access values:
 
 ### List of ticket types
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=XXX
 
 ### Show ticket type
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_type/8?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl https://app.mojohelpdesk.com/api/v2/ticket_type/8?access_key=XXX
 
 ### Create ticket type
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d '{"name":"My type"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types?access_key=XXX -X POST -d '{"name":"My type"}'
 
 ### Update ticket type
 
-    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d '{"name":"My precious type"}'
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/ticket_types/11?access_key=XXX -X PUT -d '{"name":"My precious type"}'
 
 ### Destroy ticket type
 
-    curl https://app.mojohelpdesk.com/api/v2/ticket_types/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl https://app.mojohelpdesk.com/api/v2/ticket_types/10?access_key=XXX -X DELETE
 
 ### Ticket type input fields
 
