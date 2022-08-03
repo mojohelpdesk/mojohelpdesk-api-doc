@@ -68,7 +68,22 @@ Default sorting is by 'id', descending.
 
 ### Show ticket
 
+CURL:
+
     curl https://app.mojohelpdesk.com/api/v2/tickets/88?access_key=XXX
+
+JavaScript:
+
+    <script>
+        const Http = new XMLHttpRequest();
+        const url='https://app.mojohelpdesk.com/api/v2/tickets/123456?access_key=XXX';
+        Http.open("GET", url);
+        Http.setRequestHeader("Content-Type", "application/json");
+        Http.send();
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+    </script>
 
 ### Create ticket
 
