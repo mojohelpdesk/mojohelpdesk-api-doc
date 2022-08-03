@@ -87,7 +87,28 @@ JavaScript:
 
 ### Create ticket
 
+CURL:
+
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
+    
+JavaScript:
+
+    const formData = new FormData();
+    formData.append('title', 'Test ticket');
+    formData.append('description', 'description');
+    formData.append('ticket_queue_id', 8);
+    formData.append('priority_id', 30);
+    formData.append('access_key', 'XXX');
+
+    const Http = new XMLHttpRequest();
+    Http.open("POST", "https://app.mojohelpdesk.com/api/v2/tickets");
+    Http.setRequestHeader("Content-Disposition", "multipart/form-data");
+    Http.send(formData);
+
+    Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    }
+
     
 ### Create ticket with user
 
