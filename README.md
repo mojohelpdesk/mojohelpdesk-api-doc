@@ -39,9 +39,22 @@ in the Mojo Helpdesk user profile.
 List of tickets API call supports **paging**, with optional parameters
 `per_page` and `page` parameters. `per_page` default value is 30, the maximum - 100:
 
+CURL:
+
     curl https://app.mojohelpdesk.com/api/v2/tickets?access_key=xxx\&per_page=20\&page=3
 
+JavaScript:
 
+    <script>
+        const Http = new XMLHttpRequest();
+        const url='https://app.mojohelpdesk.com/api/v2/tickets?access_key=c2705739789600bf9beed2c637d012b55c275515';
+        Http.open("GET", url);
+        Http.setRequestHeader("Content-Type", "application/json");
+        Http.send();
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+    </script>
 
 Sorting parameters:
 
