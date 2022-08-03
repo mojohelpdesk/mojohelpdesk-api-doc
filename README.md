@@ -45,16 +45,14 @@ CURL:
 
 JavaScript:
 
-    <script>
-        const Http = new XMLHttpRequest();
-        const url='https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX';
-        Http.open("GET", url);
-        Http.setRequestHeader("Content-Type", "application/json");
-        Http.send();
-        Http.onreadystatechange = (e) => {
-          console.log(Http.responseText)
-        }
-    </script>
+    const Http = new XMLHttpRequest();
+    const url='https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX';
+    Http.open("GET", url);
+    Http.setRequestHeader("Content-Type", "application/json");
+    Http.send();
+    Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    }
 
 Sorting parameters:
 
@@ -74,16 +72,14 @@ CURL:
 
 JavaScript:
 
-    <script>
-        const Http = new XMLHttpRequest();
-        const url='https://app.mojohelpdesk.com/api/v2/tickets/123456?access_key=XXX';
-        Http.open("GET", url);
-        Http.setRequestHeader("Content-Type", "application/json");
-        Http.send();
-        Http.onreadystatechange = (e) => {
-          console.log(Http.responseText)
-        }
-    </script>
+    const Http = new XMLHttpRequest();
+    const url='https://app.mojohelpdesk.com/api/v2/tickets/123456?access_key=XXX';
+    Http.open("GET", url);
+    Http.setRequestHeader("Content-Type", "application/json");
+    Http.send();
+    Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    }
 
 ### Create ticket
 
