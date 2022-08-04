@@ -122,11 +122,11 @@ HTML/JavaScript:
         for (let i = 0; i < fileList.length; i++) {
           formData.append('attachment['+i+'][content]', fileList[i]);
         }
-        formData.append('title', 'test');
+        formData.append('title', 'Test ticket');
         formData.append('description', 'description');
-        formData.append('ticket_queue_id', 1);
-        formData.append('priority_id', 10);
-        formData.append('access_key', 'fd926cc18ec35ce0796b2de869b868aad8834c39');
+        formData.append('ticket_queue_id', 8);
+        formData.append('priority_id', 30);
+        formData.append('access_key', 'XXX');
 
         const Http = new XMLHttpRequest();
         Http.open("POST", "http://localhost:3000/api/v2/tickets");
