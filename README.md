@@ -105,6 +105,39 @@ JavaScript:
       console.log(Http.responseText)
     }
 
+### Create ticket with attachments
+
+HTML/JavaScript:
+
+    <input type="file" id="file-selector" multiple>
+    <button onclick="createTicket()">create ticket</button>
+    <script>
+      var fileList;
+      const fileSelector = document.getElementById('file-selector');
+      fileSelector.addEventListener('change', (event) => {
+        fileList = event.target.files;
+      });
+      function createTicket() {
+        const formData = new FormData();
+        for (let i = 0; i < fileList.length; i++) {
+          formData.append('attachment['+i+'][content]', fileList[i]);
+        }
+        formData.append('title', 'test');
+        formData.append('description', 'description');
+        formData.append('ticket_queue_id', 1);
+        formData.append('priority_id', 10);
+        formData.append('access_key', 'fd926cc18ec35ce0796b2de869b868aad8834c39');
+
+        const Http = new XMLHttpRequest();
+        Http.open("POST", "http://localhost:3000/api/v2/tickets");
+        Http.setRequestHeader("Content-Disposition", "multipart/form-data");
+        Http.send(formData);
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+      }
+    </script>
     
 ### Create ticket with user
 
