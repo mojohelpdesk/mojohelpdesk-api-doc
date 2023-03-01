@@ -1,8 +1,8 @@
-**This API version is deprecated.**
+> **This API version is deprecated.**
 
 # Mojo Helpdesk API Documentation
 
-Mojo Helpdesk (www.MojoHelpdesk.com) is a ticket tracking service developed by Metadot. This document describes its public API.
+[Mojo Helpdesk](https://www.mojohelpdesk.com) is a ticket tracking service developed by Metadot. This document describes its public API.
 
 ## About Mojo Helpdesk API
 
