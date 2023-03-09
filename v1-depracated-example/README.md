@@ -1,6 +1,6 @@
 > **This API version is deprecated.**
 
-> **On April 8th 2023, this API version will be retired.**
+> **On May 8th 2023, this API version will be retired.**
 
 # Mojo Helpdesk API Documentation
 
