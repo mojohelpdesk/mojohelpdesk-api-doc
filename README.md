@@ -2,8 +2,8 @@
 
 [![Services Health](https://mojohelpdesk.montastic.io/badge)](https://mojohelpdesk.montastic.io)
 
-[Mojo Helpdesk](https://www.mojohelpdesk.com) is a ticket tracking software as a service (Saas). 
-It is developed by [Metadot](https://www.metadot.com). 
+[Mojo Helpdesk](https://www.mojohelpdesk.com) is a ticket tracking software as a service (Saas).
+It is developed by [Metadot](https://www.metadot.com).
 
 This document describes its public API v2. API v1 is deprecated.
 
@@ -19,8 +19,6 @@ The communication is done by using `RESTful` `HTTP` requests in `JSON` format.
 
 A Mojo Helpdesk example API usage Python script is available
 [here](https://github.com/mojohelpdesk/mojohelpdesk-api-doc/tree/master/examples/python).
-
-# Mojo Helpdesk API Documentation
 
 ## Authentication
 
@@ -86,7 +84,7 @@ JavaScript:
 CURL:
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30"}'
-    
+
 JavaScript:
 
     const formData = new FormData();
@@ -138,12 +136,12 @@ HTML/JavaScript:
         }
       }
     </script>
-    
+
 ### Create ticket with user
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/tickets?access_key=XXX -X POST -d '{"title":"Test ticket","description":"Testing API for ticket creation","ticket_queue_id":"8","priority_id":"30", "user":{"email":"customer@someplace.com"}}'
 
-#### Additional parameters
+#### Additional parameters for ticket creation
 
 - suppress_user_notification - Boolean when set to `true` will not send any email to notify for the ticket creation
 
@@ -208,7 +206,7 @@ HTML/JavaScript:
 - time_spent - Integer
 - cc - String
 
-### Additional parameters
+### Additional parameters for comment creation
 
 - suppress_user_notification - Boolean
 
@@ -336,9 +334,9 @@ Additional url params:
     between the given)
   - Surround all string values with parentheses and double quotes like the
     following examples:
-  - created_by.email:("myemail@somedomain.com")
+  - created_by.email:("<myemail@somedomain.com>")
   - company.name:("My Company, Ltd")
-  - comments.user.email:("tester@mycompany.com")
+  - comments.user.email:("<tester@mycompany.com>")
 
 ## Ticket queues
 
@@ -563,7 +561,6 @@ Additional url params:
 
     curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/groups/124147/access_rights/set?access_key=XXX -X POST -d '{"keys":["94748","15"],"has_access":"true"}'
 
-
 ## Ticket forms
 
 ### List of ticket forms
@@ -623,3 +620,229 @@ Possible access values:
 ### Ticket type input fields
 
 - name
+
+## Assets Management
+
+### List of assets
+
+    curl https://app.mojohelpdesk.com/api/v2/assets?access_key=XXX
+
+### Show asset
+
+    curl https://app.mojohelpdesk.com/api/v2/assets/1?access_key=XXX
+
+### Create asset
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/assets?access_key=XXX -X POST -d '{"display_name":"My asset", "description":"My very own asset"}'
+
+### Update asset
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/assets/1?access_key=XXX -X PUT -d '{"display_name":"My precious asset"}'
+
+### Destroy asset
+
+    curl https://app.mojohelpdesk.com/api/v2/assets/1?access_key=XXX -X DELETE
+
+### Asset input fields
+
+- asset_tag - string
+- serial_number - string
+- legacy_reference_number - string
+- display_name - string
+- description - string
+- asset_type_id - integer
+- location_id - integer
+- department_id - integer
+- managed_by_id - integer
+- used_by_id - integer
+- asset_status_id - integer
+- notes - string
+- purchased_on - date
+- cost - float
+- purchase_order_number - string
+- vendor - string
+- replaced_on - date
+- warranty_info - string
+- end_of_contract_on - date
+- contract_notes - string
+- create_ticket_days_before - integer
+- birthday - date
+- visibility - 'staff_only', 'all_users' or 'logged_in_users'
+
+### Search assets
+
+The last part of the urls is the search query - the format is similar as
+the one for ticket search. Note the usage of `%20` instead of space,
+`\&` instead of just `&`, `\(` instead of `(`, `\<` instead of `<`.
+
+Url params:
+
+- `query` - the search query
+- `sort_field` - sort field name (same as the web form search, i.e. location_name)
+- `sort_order` - 'asc' or 'desc'
+- `per_page` - results per page (default 10, min 10, max 100)
+- `page` - page number (default 1)
+
+Sort fields:
+
+- name
+- tag
+- asset_type_name
+- location_name
+- department_name
+- managed_by_name
+- used_by_name
+- status_name
+- birthday_sort
+- serial_number
+- created_on
+- updated_on
+
+Searchable fields:
+
+- asset_tag
+- display_name
+- description
+- asset_type.id
+- asset_type.name
+- location.id
+- location.name
+- department.id
+- department.name
+- managed_by.email
+- managed_by.id
+- managed_by.name
+- used_by.email
+- used_by.id
+- used_by.name
+- created_on
+- updated_on
+- status
+- purchased_on
+- vendor
+- end_of_contract_on
+- replaced_on
+- serial_number
+- birthday
+
+#### Search all assets in certain location
+
+    curl https://app.mojohelpdesk.com/api/v2/assets/search?query=location.id:123\&sort_field=created_on\&sort_order=asc\&access_key=XXX
+
+#### Search all assets which display name has 'laptop' in it
+
+    curl https://app.mojohelpdesk.com/api/v2/assets/search?query=display_name:*laptop*\&sort_field=created_on\&sort_order=asc\&access_key=XXX
+
+### List of asset statuses
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_statuses?access_key=XXX
+
+### Show asset status
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_statuses/1?access_key=XXX
+
+### Create asset status
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/asset_statuses?access_key=XXX -X POST -d '{"name":"My asset type"}'
+
+### Update asset status
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/asset_statuses/1?access_key=XXX -X PUT -d '{"name":"My precious asset type"}'
+
+### Destroy asset status
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_statuses/1?access_key=XXX -X DELETE
+
+### Asset status input fields
+
+- name - string
+
+### List of asset types
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_types?access_key=XXX
+
+### List of asset types in tree order
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_types/tree?access_key=XXX
+
+### Show asset type
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_types/1?access_key=XXX
+
+### Create asset type
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/asset_types?access_key=XXX -X POST -d '{"name":"My asset type", "description":"My very own asset type"}'
+
+### Update asset type
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/asset_types/1?access_key=XXX -X PUT -d '{"name":"My precious asset type"}'
+
+### Destroy asset type
+
+    curl https://app.mojohelpdesk.com/api/v2/asset_types/1?access_key=XXX -X DELETE
+
+### Asset type input fields
+
+- name - string
+- description - string
+- parent_id - integer
+
+### List of departments
+
+    curl https://app.mojohelpdesk.com/api/v2/departments?access_key=XXX
+
+### List of departments in tree order
+
+    curl https://app.mojohelpdesk.com/api/v2/departments/tree?access_key=XXX
+
+### Show department
+
+    curl https://app.mojohelpdesk.com/api/v2/departments/1?access_key=XXX
+
+### Create department
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/departments?access_key=XXX -X POST -d '{"name":"My department", "description":"My very own department"}'
+
+### Update department
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/departments/1?access_key=XXX -X PUT -d '{"name":"My precious department"}'
+
+### Destroy department
+
+    curl https://app.mojohelpdesk.com/api/v2/departments/1?access_key=XXX -X DELETE
+
+### Department input fields
+
+- name - string
+- description - string
+- parent_id - integer
+
+### List of locations
+
+    curl https://app.mojohelpdesk.com/api/v2/locations?access_key=XXX
+
+### List of locations in tree order
+
+    curl https://app.mojohelpdesk.com/api/v2/locations/tree?access_key=XXX
+
+### Show location
+
+    curl https://app.mojohelpdesk.com/api/v2/locations/1?access_key=XXX
+
+### Create location
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/locations?access_key=XXX -X POST -d '{"name":"My location", "description":"My very own location"}'
+
+### Update location
+
+    curl -H 'Content-type: application/json' https://app.mojohelpdesk.com/api/v2/locations/1?access_key=XXX -X PUT -d '{"name":"My precious location"}'
+
+### Destroy location
+
+    curl https://app.mojohelpdesk.com/api/v2/locations/1?access_key=XXX -X DELETE
+
+### Location input fields
+
+- name - string
+- description - string
+- parent_id - integer
