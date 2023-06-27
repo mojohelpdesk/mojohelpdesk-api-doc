@@ -226,6 +226,46 @@ assert r.status_code == 200, "Error getting recently closed tickets: expected 20
 tickets = r.json()
 assert tickets[0]['rating'] == 60, "Ticket rating should be 60, but got %d" % tickets[0]['rating']
 
+#
+# 
+# get asset list
+show_progress()
+r = requests.get(apiUrl + 'assets?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting asset list. Expected 200, got: %d" % r.status_code
+assets = r.json()
+
+#
+# 
+# get asset status list
+show_progress()
+r = requests.get(apiUrl + 'asset_statuses?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting asset status list. Expected 200, got: %d" % r.status_code
+asset_statuses = r.json()
+
+#
+# 
+# get asset type list
+show_progress()
+r = requests.get(apiUrl + 'asset_types?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting asset type list. Expected 200, got: %d" % r.status_code
+asset_types = r.json()
+
+#
+# 
+# get department list
+show_progress()
+r = requests.get(apiUrl + 'departments?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting department list. Expected 200, got: %d" % r.status_code
+departments = r.json()
+
+#
+# 
+# get location list
+show_progress()
+r = requests.get(apiUrl + 'locations?access_key=' + goodKey, headers=headers)
+assert r.status_code == 200, "Error getting location list. Expected 200, got: %d" % r.status_code
+locations = r.json()
+
 print("\n==================")
 print("==== TESTS OK ====")
 print("==================\n")
