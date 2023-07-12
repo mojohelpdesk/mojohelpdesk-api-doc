@@ -189,6 +189,8 @@ HTML/JavaScript:
   i.e. custom_field_my_awesome_field)
 - user_id - Integer
 - cc - String
+- asset_tag - String
+- asset_id - Integer
 
 ## Ticket comments
 
