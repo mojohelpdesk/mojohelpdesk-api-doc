@@ -28,6 +28,10 @@ In the code below, replace `access_key` parameter with your access key
 The Mojo Helpdesk API requires an access key that is found
 in the Mojo Helpdesk user profile.
 
+## Requirements
+
+- curl version 8.6 or higher
+
 ## Tickets
 
 ### List tickets
