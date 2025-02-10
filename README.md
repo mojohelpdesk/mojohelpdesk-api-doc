@@ -296,17 +296,19 @@ Additional url params:
 ### List of searchable fields
 
 - assignee.id
-- assignee.name
+- ~~assignee.name~~ - **DEPRECATED**
+  → Retrieve the user ID and use it in the assignee.id search parameter instead.
 - assignee.email
-- comments.id
+- ~~comments.id~~ - **DEPRECATED**
 - comments.body
-- comments.created_on
-- comments.time_spent
-- comments.user.id
-- comments.user.name
-- comments.user.email
+- ~~comments.created_on~~ - **DEPRECATED**
+- ~~comments.time_spent~~ - **DEPRECATED**
+- ~~comments.user.id~~ - **DEPRECATED**
+- ~~comments.user.name~~ - **DEPRECATED**
+- ~~comments.user.email~~ - **DEPRECATED**
 - company.id
-- company.name
+- ~~company.name~~ - **DEPRECATED**
+  → Retrieve the company ID and use it in the company.id search parameter instead.
 - created_by.id
 - created_by.name
 - created_by.email
@@ -315,18 +317,22 @@ Additional url params:
 - description
 - due_on
 - priority.id
-- priority.name
+- ~~priority.name~~ - **DEPRECATED**
+  → Retrieve the priority ID and use it in the priority.id search parameter instead.
 - queue.id
-- queue.name
+- ~~queue.name~~ - **DEPRECATED**
+  → Retrieve the queue ID and use it in the queue.id search parameter instead.
 - rating
 - rated_on
 - scheduled_on
 - solved_on
 - status.id
-- status.name
+- ~~status.name~~ - **DEPRECATED**
+  → Retrieve the status ID and use it in the status.id search parameter instead.
 - status_changed_on
 - type.id
-- type.name
+- ~~type.name~~ - **DEPRECATED**
+  → Retrieve the type ID and use it in the type.id search parameter instead.
 - title
 - updated_on
 
@@ -341,8 +347,6 @@ Additional url params:
   - Surround all string values with parentheses and double quotes like the
     following examples:
   - created_by.email:("<myemail@somedomain.com>")
-  - company.name:("My Company, Ltd")
-  - comments.user.email:("<tester@mycompany.com>")
 
 ## Ticket queues
 
@@ -710,17 +714,22 @@ Searchable fields:
 - display_name
 - description
 - asset_type.id
-- asset_type.name
+- ~~asset_type.name~~ - **DEPRECATED**
+  → Retrieve the asset type ID and use it in the asset_type.id search parameter instead.
 - location.id
-- location.name
+- ~~location.name~~ - **DEPRECATED**
+  → Retrieve the location ID and use it in the location.id search parameter instead.
 - department.id
-- department.name
+- ~~department.name~~ - **DEPRECATED**
+  → Retrieve the department ID and use it in the department.id search parameter instead.
 - managed_by.email
 - managed_by.id
-- managed_by.name
+- ~~managed_by.name~~ - **DEPRECATED**
+  → Retrieve the user ID and use it in the managed_by.id search parameter instead.
 - used_by.email
 - used_by.id
-- used_by.name
+- ~~used_by.name~~ - **DEPRECATED**
+  → Retrieve the user ID and use it in the used_by.id search parameter instead.
 - created_on
 - updated_on
 - status
