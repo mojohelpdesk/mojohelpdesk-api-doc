@@ -330,6 +330,7 @@ Additional url params:
 - ~~status.name~~ - **DEPRECATED**
   → Retrieve the status ID and use it in the status.id search parameter instead.
 - status_changed_on
+- tags.id
 - type.id
 - ~~type.name~~ - **DEPRECATED**
   → Retrieve the type ID and use it in the type.id search parameter instead.
