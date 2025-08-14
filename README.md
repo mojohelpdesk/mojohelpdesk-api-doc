@@ -1,5 +1,11 @@
 # Mojo Helpdesk API v2 Documentation
 
+⚠️ **WARNING: This documentation is OUT OF DATE** ⚠️
+
+**Please visit [developer.mojohelpdesk.com](https://developer.mojohelpdesk.com) for the most current and up-to-date API documentation.**
+
+---
+
 [![Services Health](https://mojohelpdesk.montastic.io/badge)](https://mojohelpdesk.montastic.io)
 
 [Mojo Helpdesk](https://www.mojohelpdesk.com) is a ticket tracking software as a service (Saas).
