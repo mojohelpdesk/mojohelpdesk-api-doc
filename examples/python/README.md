@@ -16,6 +16,7 @@ Get your access key from your Mojo Helpdesk account user profile then run:
 
 ## More info
 
-See [Mojo Helpdesk API doc](https://github.com/mojohelpdesk/mojohelpdesk-api-doc)
+Please visit <https://developer.mojohelpdesk.com> for Mojo Helpdesk API documentation.
+
 
 Enjoy!
