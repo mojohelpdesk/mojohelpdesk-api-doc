@@ -1,6 +1,6 @@
 # Mojo Helpdesk API Documentation
 
-Mojo Helpdes (<www.mojohelpdesk.com>) is a help desk / ticket tracking software. 
+Mojo Helpdesk (<www.mojohelpdesk.com>) is a help desk / ticket tracking software. 
 It is used to track internal and customer requests.
 
 Visit [developer.mojohelpdesk.com](https://developer.mojohelpdesk.com) for 
