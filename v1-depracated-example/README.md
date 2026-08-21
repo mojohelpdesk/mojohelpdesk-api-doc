@@ -12,7 +12,7 @@ Mojo Helpdesk API is simplistic and very easy to use. Mojo Helpdesk API allows 3
 
 ## Authentication
 
-In the code below, replace `mysupport.mojohelpdesk.com` with your helpdesk address, and `access_key` parameter with your access key (it can be found in your profile).
+In the code below, replace `mysupport.mojohelpdesk.com` with your helpdesk address, and the `X-API-KEY` header value with your access key (it can be found in your profile). Send the key in the header, never in the URL — a key in the query string leaks into server access logs, browser history and `Referer` headers.
  
 The Mojo Helpdesk API can return XML or JSON. It requires an access key that is found in the Mojo Helpdesk user profile.
 
@@ -20,17 +20,17 @@ The Mojo Helpdesk API can return XML or JSON. It requires an access key that is 
 ## Tickets
 ### List tickets
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets.xml
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets.json
 
 
 
 List of tickets API call supports **paging**, with optional parameters `per_page` and `page` parameters. `per_page` default value is 30, the maximum - 100:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=20\&page=3
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?per_page=20\&page=3
 
 Sorting parameters:
   - **sort_by** - id, title, description, user_id, assigned_to_id, status_id, ticket_form_id, priority_id, ticket_queue_id, company_id, rating, rated_on, created_on, updated_on, status_changed_on, solved_on, assinged_on, ticket_type_id, due_on, scheduled_on
@@ -41,27 +41,27 @@ Default sorting is by 'id', descending.
 
 ###  Show ticket
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88.xml
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88.json
 
  
 
 ### Create ticket
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<ticket><title>Test ticket</title><description>Testing API for ticket creation</description><ticket_queue_id>8</ticket_queue_id><priority_id>30</priority_id></ticket>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets -X POST -d "<ticket><title>Test ticket</title><description>Testing API for ticket creation</description><ticket_queue_id>8</ticket_queue_id><priority_id>30</priority_id></ticket>"
 
 ###  Update ticket
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<ticket><title>Test ticket API</title></ticket>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113 -X PUT -d "<ticket><title>Test ticket API</title></ticket>"
 
  
 
 ### Destroy ticket
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/113 -X DELETE
 
 ### List of input fields  
 
@@ -91,17 +91,17 @@ Default sorting is by 'id', descending.
 ## Ticket comments
 ### Listing comments for a ticket:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments.xml
     
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/114/comments.json
 
  
 
 ### Create comment:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88/comments?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<comment><body>New comment</body></comment>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/88/comments -X POST -d "<comment><body>New comment</body></comment>"
 
 ### Comment input fields  
 
@@ -131,15 +131,15 @@ Additional url params:
 
 #### All open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=status.id:\(\<50\)\&sf=created_on\&r=0
 
 #### All urgent open tickets:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=priority.id:\(\<=20\)%20AND%20status.id:\(\<50\)&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=priority.id:\(\<=20\)%20AND%20status.id:\(\<50\)&sf=created_on\&r=0
 
 #### All open tickets in certain queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=queue.id:19647%20AND%20status.id:\(\<50\)\&sf=created_on\&r=0\&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/tickets/search?query=queue.id:19647%20AND%20status.id:\(\<50\)\&sf=created_on\&r=0
 
 #### List of searchable fields:
 
@@ -197,41 +197,41 @@ Additional url params:
 
 ### List of ticket queues:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues.xml
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues.json
 
  
 
 ### List of ticket queues supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues?per_page=10\&page=2
 
  
 
 ### Show ticket queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/8?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/8
 
  
 
 ### Create ticket queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<ticket_queue><name>My queue</name></ticket_queue>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues -X POST -d "<ticket_queue><name>My queue</name></ticket_queue>"
 
  
 
 ### Update ticket queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/11?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<ticket_queue><name>My precios queue</name></ticket_queue>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/11 -X PUT -d "<ticket_queue><name>My precios queue</name></ticket_queue>"
 
  
 
 ### Destroy ticket queue:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/10?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/ticket_queues/10 -X DELETE
 
 ### List of input fields  
 
@@ -245,35 +245,35 @@ Additional url params:
 
 ### List of companies:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.xml
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies.json
 
  
 
 ### List of companies supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?per_page=10\&page=2
 
  
 
 ### Create company:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X POST -d "<company><name>My very own company</name></company>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies -X POST -d "<company><name>My very own company</name></company>"
 
  
 
 ### Update company:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<company><website-url>www.google.com</website-url></company>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999 -X PUT -d "<company><website-url>www.google.com</website-url></company>"
 
  
 
 ### Destroy company:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/companies/1999 -X DELETE
 
 ### List of input fields  
 
@@ -300,52 +300,52 @@ Additional url params:
 
 ### List of users:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.xml
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users.json
 
 ### List of agents:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/techs.xml
 
  
 ### List of users supports paging, with optional parameters per_page and page parameters. If per_page is missing, by default it will return 30 items per page:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&per_page=10\&page=2
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?per_page=10\&page=2
 
  
 
 ### Show user:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.xml?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.xml
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.json?access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1.json
 
 ### Get user by email address:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/get_by_email?email=someone@company.com&access_key=9c9745101d12aed4d5a67d43747824451f9251d4
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/get_by_email?email=someone@company.com
 
 ### Create user:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?access_key=9c9745101d12aed4d5a67d43747824451f9251d4\&send_welcome_email=1 -X POST -d "<user><email>ivaylo@metadot.com</email><first_name>Ivaylo</first_name><last_name>Georgiev</last_name><company_id>888</company_id><password>111111</password></user>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users?send_welcome_email=1 -X POST -d "<user><email>ivaylo@metadot.com</email><first_name>Ivaylo</first_name><last_name>Georgiev</last_name><company_id>888</company_id><password>111111</password></user>"
 
 
 
 ### Update user:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X PUT -d "<user><user_notes>Thats me again.</user_notes></user>"
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999 -X PUT -d "<user><user_notes>Thats me again.</user_notes></user>"
 
  
 
 ### Destroy user:
 
-    curl -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999?access_key=9c9745101d12aed4d5a67d43747824451f9251d4 -X DELETE
+    curl -H 'X-API-KEY: 9c9745101d12aed4d5a67d43747824451f9251d4' -H 'Accept: application/xml' -H 'Content-type: application/xml' http://mysupport.mojohelpdesk.com/api/users/1999 -X DELETE
 
 
 
