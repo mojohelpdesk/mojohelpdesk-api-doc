@@ -50,27 +50,33 @@ print("Using DN: %s" % dn)
 # 
 apiUrl = dn + '/api/v2/'
 
-headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
+# The API key travels in the X-API-KEY request header, never in the URL: a key in
+# the query string leaks into server access logs, browser history and Referer headers.
+headers = {'Accept': 'application/json', 'Content-Type': 'application/json',
+           'X-API-KEY': goodKey}
+badHeaders = dict(headers, **{'X-API-KEY': badKey})
+# Multipart upload: let requests set Content-Type (it must carry the MIME boundary).
+uploadHeaders = {'X-API-KEY': goodKey}
 
 #
 # 
 # get ticket list w/ good key
 show_progress()
-r = requests.get(apiUrl + 'tickets?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'tickets', headers=headers)
 assert r.status_code == 200, "Error getting ticket list. Expected 200, got: %d" % r.status_code
 
 #
 # 
 # get w/ bad key => error 401
 show_progress()
-r = requests.get(apiUrl + 'tickets?access_key=' + badKey, headers=headers)
+r = requests.get(apiUrl + 'tickets', headers=badHeaders)
 assert r.status_code == 401, "Should get 'not authorized' error, got: %d" % r.status_code
 
 #
 # 
 # get ticket queue list
 show_progress()
-r = requests.get(apiUrl + 'ticket_queues?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'ticket_queues', headers=headers)
 assert r.status_code == 200, "Error getting ticket queue list. Expected 200, got: %d" % r.status_code
 ticket_queues = r.json()
 
@@ -78,7 +84,7 @@ ticket_queues = r.json()
 # 
 # get ticket form list
 show_progress()
-r = requests.get(apiUrl + 'ticket_forms?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'ticket_forms', headers=headers)
 assert r.status_code == 200, "Error getting ticket form list. Expected 200, got: %d" % r.status_code
 ticket_forms = r.json()
 
@@ -88,7 +94,7 @@ ticket_forms = r.json()
 show_progress()
 data = {'title': 'Test ticket', 'description': 'Testing API for ticket creation', 'priority_id': 30,
         'ticket_queue_id': ticket_queues[0]['id']}
-r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, json=data, headers=headers)
+r = requests.post(apiUrl + 'tickets', json=data, headers=headers)
 assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
 ticket = r.json()
 
@@ -98,7 +104,7 @@ ticket = r.json()
 show_progress()
 data = {'suppress_user_notification': 'true', 'title': 'Test ticket', 'description': 'Testing API for ticket creation',
         'priority_id': 30, 'ticket_queue_id': ticket_queues[0]['id']}
-r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, json=data, headers=headers)
+r = requests.post(apiUrl + 'tickets', json=data, headers=headers)
 assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
 ticket = r.json()
 
@@ -116,7 +122,7 @@ files = {
     'attachment[0][content]': open('testfile.txt', 'rb'),
     'attachment[1][content]': open('logo.png', 'rb')
 }
-r = requests.post(apiUrl + 'tickets?access_key=' + goodKey, files=files, data=data)
+r = requests.post(apiUrl + 'tickets', files=files, data=data, headers=uploadHeaders)
 assert r.status_code == 201, "Error creating: expected 201, got: %d." % r.status_code
 ticket = r.json()
 
@@ -124,7 +130,7 @@ ticket = r.json()
 # 
 # show ticket OK
 show_progress()
-r = requests.get(apiUrl + 'tickets/%s' % ticket['id'] + '?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'tickets/%s' % ticket['id'], headers=headers)
 assert r.status_code == 200, "Error showing: expected 200, got: %d." % r.status_code
 ticket = r.json()
 
@@ -133,14 +139,14 @@ ticket = r.json()
 # update ticket OK
 show_progress()
 data = {'title': 'Test ticket API'}
-r = requests.put(apiUrl + 'tickets/%s' % ticket['id'] + '?access_key=' + goodKey, json=data, headers=headers)
+r = requests.put(apiUrl + 'tickets/%s' % ticket['id'], json=data, headers=headers)
 assert r.status_code == 200, "Error updating: expected 200, got: %d." % r.status_code
 
 #
 # 
 # get agents details OK
 show_progress()
-r = requests.get(apiUrl + 'users/techs?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'users/techs', headers=headers)
 assert r.status_code == 200, "Error getting list of agents: expected 200, got: %d." % r.status_code
 agents = r.json()
 
@@ -148,7 +154,7 @@ agents = r.json()
 # 
 # get access rights for restricted agents
 show_progress()
-r = requests.get(apiUrl + 'access_rights/restricted_agents?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'access_rights/restricted_agents', headers=headers)
 assert r.status_code == 200, "Error getting access rights for restricted agents. Expected 200, got: %d" % r.status_code
 restricted_agents = r.json()
 
@@ -156,7 +162,7 @@ restricted_agents = r.json()
 # 
 # get access rights for groups
 show_progress()
-r = requests.get(apiUrl + 'access_rights/groups?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'access_rights/groups', headers=headers)
 assert r.status_code == 200, "Error getting access rights for restricted agents. Expected 200, got: %d" % r.status_code
 groups = r.json()
 
@@ -165,7 +171,7 @@ groups = r.json()
 # assign ticket OK
 show_progress()
 data = {'assignee_id': agents[0]['id']}
-r = requests.put(apiUrl + 'tickets/%s' % ticket['id'] + '?access_key=' + goodKey, json=data, headers=headers)
+r = requests.put(apiUrl + 'tickets/%s' % ticket['id'], json=data, headers=headers)
 assert r.status_code == 200, "Error assigning: expected 200, got: %d." % r.status_code
 
 #
@@ -173,7 +179,7 @@ assert r.status_code == 200, "Error assigning: expected 200, got: %d." % r.statu
 # Add tag to a ticket
 show_progress()
 data = {'tag_label': 'Test'}
-r = requests.post(apiUrl + 'tickets/%s' % ticket['id'] + '/add_tag?access_key=' + goodKey, json=data, headers=headers)
+r = requests.post(apiUrl + 'tickets/%s' % ticket['id'] + '/add_tag', json=data, headers=headers)
 assert r.status_code == 200, "Error adding tag: expected 200, got: %d." % r.status_code
 new_tag_list = r.json()
 assert len(ticket['tags']) + 1 == len(new_tag_list), 'List of tags should be increased by 1'
@@ -182,7 +188,7 @@ assert len(ticket['tags']) + 1 == len(new_tag_list), 'List of tags should be inc
 #
 # Get list of events for a ticket
 show_progress()
-r = requests.get(apiUrl + 'tickets/%s' % ticket['id'] + '/events?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'tickets/%s' % ticket['id'] + '/events', headers=headers)
 assert r.status_code == 200, "Error getting list of events: expected 200, got: %d." % r.status_code
 events = r.json()
 assert len(events) > 0, 'List of events should not be empty'
@@ -192,7 +198,7 @@ assert len(events) > 0, 'List of events should not be empty'
 # Remove tag from a ticket
 show_progress()
 data = {'tag_label': 'Test'}
-r = requests.post(apiUrl + 'tickets/%s' % ticket['id'] + '/remove_tag?access_key=' + goodKey, json=data,
+r = requests.post(apiUrl + 'tickets/%s' % ticket['id'] + '/remove_tag', json=data,
                   headers=headers)
 assert r.status_code == 200, "Error removing tag: expected 200, got: %d." % r.status_code
 new_tag_list = r.json()
@@ -202,7 +208,7 @@ assert len(ticket['tags']) == len(new_tag_list), 'List of tags should be decreas
 # 
 # delete newly created ticket
 show_progress()
-url = apiUrl + 'tickets/%s' % ticket['id'] + '?access_key=' + goodKey
+url = apiUrl + 'tickets/%s' % ticket['id']
 r = requests.delete(url, headers=headers)
 assert r.status_code == 200, "Error deleting: expected 200, got: %d." % r.status_code
 
@@ -210,7 +216,7 @@ assert r.status_code == 200, "Error deleting: expected 200, got: %d." % r.status
 #
 # search for recently closed tickets 
 show_progress()
-url = apiUrl + 'tickets/search?access_key=' + goodKey + '&query=status.id:60&sf=closed_on&r=1'
+url = apiUrl + 'tickets/search?query=status.id:60&sf=closed_on&r=1'
 r = requests.get(url, headers=headers)
 tickets = r.json()
 assert r.status_code == 200, "Error getting recently closed tickets: expected 200, got: %d." % r.status_code
@@ -220,7 +226,7 @@ assert tickets[0]['status_id'] == 60, "Ticket status should be 60, but got %d" %
 #
 # search for tickets rated with 3 stars (rating 60)
 show_progress()
-url = apiUrl + 'tickets/search?access_key=' + goodKey + '&query=rating:60&sf=closed_on&r=1'
+url = apiUrl + 'tickets/search?query=rating:60&sf=closed_on&r=1'
 r = requests.get(url, headers=headers)
 assert r.status_code == 200, "Error getting recently closed tickets: expected 200, got: %d." % r.status_code
 tickets = r.json()
@@ -230,7 +236,7 @@ assert tickets[0]['rating'] == 60, "Ticket rating should be 60, but got %d" % ti
 # 
 # get asset list
 show_progress()
-r = requests.get(apiUrl + 'assets?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'assets', headers=headers)
 assert r.status_code == 200, "Error getting asset list. Expected 200, got: %d" % r.status_code
 assets = r.json()
 
@@ -238,7 +244,7 @@ assets = r.json()
 # 
 # get asset status list
 show_progress()
-r = requests.get(apiUrl + 'asset_statuses?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'asset_statuses', headers=headers)
 assert r.status_code == 200, "Error getting asset status list. Expected 200, got: %d" % r.status_code
 asset_statuses = r.json()
 
@@ -246,7 +252,7 @@ asset_statuses = r.json()
 # 
 # get asset type list
 show_progress()
-r = requests.get(apiUrl + 'asset_types?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'asset_types', headers=headers)
 assert r.status_code == 200, "Error getting asset type list. Expected 200, got: %d" % r.status_code
 asset_types = r.json()
 
@@ -254,7 +260,7 @@ asset_types = r.json()
 # 
 # get department list
 show_progress()
-r = requests.get(apiUrl + 'departments?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'departments', headers=headers)
 assert r.status_code == 200, "Error getting department list. Expected 200, got: %d" % r.status_code
 departments = r.json()
 
@@ -262,7 +268,7 @@ departments = r.json()
 # 
 # get location list
 show_progress()
-r = requests.get(apiUrl + 'locations?access_key=' + goodKey, headers=headers)
+r = requests.get(apiUrl + 'locations', headers=headers)
 assert r.status_code == 200, "Error getting location list. Expected 200, got: %d" % r.status_code
 locations = r.json()
 
